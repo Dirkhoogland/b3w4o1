@@ -1,5 +1,5 @@
 <?php
- require 'index.php';
+ include_once 'index.php';
  require 'connection.php';
 ?>
 
