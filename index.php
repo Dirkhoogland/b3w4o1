@@ -1,7 +1,16 @@
-<<?php 
+<?php 
+require 'connection.php';
+include_once 'character.php'; 
 
-include_once 'character.php';
+try {
+    $dbh = new PDO('mysql:host=localhost;dbname= opdracht-4', 'root','mysql' );
+    }
+    $dbh = null;
 
+    catch (PDOException $e) {
+    print "Error!: " . $e->getMessage() . "<br/>";
+    die();
+}
 
 
  ?>
