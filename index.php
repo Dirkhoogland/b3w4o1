@@ -1,16 +1,8 @@
 <?php 
-// require 'connection.php';
+require 'connection.php';
 // include_once 'character.php'; 
     
-try {
-    $conn = new PDO('mysql:host=localhost;dbname=opdracht-4', 'root','mysql' );
-    }
-   
 
-    catch (PDOException $e) {
-    print "Error!: " . $e->getMessage() . "<br/>";
-    die();
-}
  
 $sql='SELECT name , health , bio , color , attack , defense , weapon , armor FROM `characters` order by name';
 $sth= $conn->prepare($sql);
@@ -29,7 +21,17 @@ print_r($result[1]['name']);
  	<title>index</title>
  </head>
  <body>
+<table border ="1">
+	<thead>
+		<td>Name</td>
+		<td>max health</td>
+		<td>attack</td>
+		<td>defense</td>
+		<td>agility</td>
+	</thead>
 
+
+</table>
  <p id="footer">dirk hoogland 2021</p>
  </body>
  </html>
