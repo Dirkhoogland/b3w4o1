@@ -1,13 +1,6 @@
 <?php 
 require 'connection.php';
-
-    
-
- 
-$sql='SELECT name , health , bio , color , attack , defense , weapon , armor FROM `characters` order by name';
-$sth= $conn->prepare($sql);
-$sth->execute();
-$result= $sth->fetchall();
+require 'function.php';
 ?>
 
 
@@ -22,26 +15,28 @@ $result= $sth->fetchall();
     <link href="resources/css/style.css" rel="stylesheet"/>
 </head>
 <body>
-<header><h1>Alle [X] characters uit de database</h1>
+<header><h1>Alle <?php echo $qty[0] ?> characters uit de database</h1>
 
 </header>
-<div id="container">
-    <a class="item" href="character.php">
+<div id="container"> 
+    <?php foreach ($result as $rows) { ?>
+    <a class="item" href="character.php?id=<?php echo $result[$count]["id"]; ?>" style='width: 445px;'>
         <div class="left">
-            <img class="avatar" src="resources/images/bowser.jpg">
+            <img class="avatar" src="resources/images/<?php echo $result[$count]["avatar"] ?>">
         </div>
         <div class="right">
-            <h2>Bowser</h2>
+            <h2><?php echo $result[$count]["name"] ?> </h2>
             <div class="stats">
                 <ul class="fa-ul">
-                    <li><span class="fa-li"><i class="fas fa-heart"></i></span> 10000</li>
-                    <li><span class="fa-li"><i class="fas fa-fist-raised"></i></span> 400</li>
-                    <li><span class="fa-li"><i class="fas fa-shield-alt"></i></span> 100</li>
+                    <li><span class="fa-li"><i class="fas fa-heart"></i></span><?php echo $result[$count]["health"] ?></li>
+                    <li><span class="fa-li"><i class="fas fa-fist-raised"></i></span><?php echo $result[$count]["attack"] ?></li>
+                    <li><span class="fa-li"><i class="fas fa-shield-alt"></i></span><?php echo $result[$count]["defense"] ?></li>
                 </ul>
             </div>
         </div>
         <div class="detailButton"><i class="fas fa-search"></i> bekijk</div>
     </a>
+    <?php $count++; }; ?>
 </div>
 <footer>&copy; Dirk hoogland 2021</footer>
 </body>

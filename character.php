@@ -1,5 +1,8 @@
 <?php 
-require 'connection.php';
+    require 'connection.php';
+    require 'function2.php';
+
+
 
 ?>
 
@@ -13,36 +16,27 @@ require 'connection.php';
     <link href="resources/css/style.css" rel="stylesheet"/>
 </head>
 <body>
-<header><h1>Bowser</h1>
+<header><h1><?php echo $result[0]['name']; ?></h1>
     <a class="backbutton" href="index.php"><i class="fas fa-long-arrow-alt-left"></i> Terug</a></header>
 <div id="container">
     <div class="detail">
         <div class="left">
-            <img class="avatar" src="resources/images/bowser.jpg">
+            <img class="avatar" src="resources/images/<?php echo $result[0]['avatar']; ?>">
             <div class="stats" style="background-color: yellowgreen">
                 <ul class="fa-ul">
-                    <li><span class="fa-li"><i class="fas fa-heart"></i></span> 10000</li>
-                    <li><span class="fa-li"><i class="fas fa-fist-raised"></i></span> 400</li>
-                    <li><span class="fa-li"><i class="fas fa-shield-alt"></i></span> 100</li>
+                    <li><span class="fa-li"><i class="fas fa-heart"></i></span><?php echo $result[0]['health']; ?></li>
+                    <li><span class="fa-li"><i class="fas fa-fist-raised"></i></span><?php echo $result[0]['attack']; ?></li>
+                    <li><span class="fa-li"><i class="fas fa-shield-alt"></i></span><?php echo $result[0]['defense']; ?></li>
                 </ul>
                 <ul class="gear">
-                    <li><b>Weapon</b>: Fire Breath</li>
-                    <li><b>Armor</b>: Giant Shell</li>
+                    <li><b>Weapon</b>: <?php echo $result[0]['weapon']; ?></li>
+                    <li><b>Armor</b>: <?php echo $result[0]['armor']; ?></li>
                 </ul>
             </div>
         </div>
         <div class="right">
             <p>
-                Bowser or King Koopa, is a fictional character and the main antagonist of Nintendo's Mario franchise. In
-                Japan, the character bears the title of Great Demon King. In the U.S., the character was first referred
-                to as "Bowser, King of the Koopas" and "the sorcerer king" in the instruction manual.<br/>
-                <br/>
-                Bowser is the leader of the turtle-like Koopa race, and has been the archenemy of Mario since his first
-                appearance, in the 1985 video game Super Mario Bros.<br/>
-                <br/>
-                His ultimate goals are to kidnap Princess Peach, defeat Mario, and conquer the Mushroom Kingdom. Since
-                his debut, he has appeared in almost every Mario franchise game, usually serving as the main antagonist.
-                Bowser is voiced by Kenny James.
+                <?php echo $result[0]['bio']; ?>
             </p>
         </div>
         <div style="clear: both"></div>
