@@ -3,6 +3,7 @@
 require 'function.php';
 connection();
 $result = functie2();
+$plaats = location();
  
 
 ?>
@@ -34,6 +35,14 @@ $result = functie2();
                     <li><b>Armor</b>: <?php echo $result[0]['armor']; ?></li>
                 </ul>
             </div>
+                    <form>
+                     <label><b>Huidige Locatie:<?php echo $plaats[0]['location'] ?></b></label>
+                        <select>
+                         <option value="1"><?php echo $plaats[0]['location'] ?></option>
+                        </select>
+                        <input type="submit" value="update">
+                    </form>
+
         </div>
         <div class="right">
             <p>

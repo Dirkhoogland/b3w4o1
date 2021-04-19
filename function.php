@@ -26,7 +26,7 @@ function functie(){
 }
 
 	function functie2() {
-	 include 'connection.php';
+
 	 $count = $_GET["id"];
     $sql='SELECT avatar, id, name , health , bio , color , attack , defense , weapon , armor FROM `characters` WHERE id = ' . $count;
     	$conn = connection();
@@ -51,4 +51,17 @@ function countAllCharacters(){
 	return $qty;
 }
 
+function location(){
+	$conn = connection();
+		$query3 = 'SELECT name FROM locations';
+
+
+		$sth3 = $conn->prepare($query3);
+
+	$sth3->execute();
+
+	$plaats = $sth3->fetch();
+
+	return $plaats;
+}
     ?>
