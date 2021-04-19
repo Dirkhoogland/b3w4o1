@@ -1,6 +1,9 @@
 <?php 
-require 'connection.php';
+
 require 'function.php';
+connection();
+$result = functie();
+$qty = countAllCharacters();
 ?>
 
 
@@ -19,18 +22,18 @@ require 'function.php';
 
 </header>
 <div id="container"> 
-    <?php foreach ($result as $rows) { ?>
-    <a class="item" href="character.php?id=<?php echo $result[$count]["id"]; ?>" style='width: 445px;'>
+    <?php foreach ($result as $row) { ?>
+    <a class="item" href="character.php?id=<?php echo $row["id"]; ?>" style='width: 445px;'>
         <div class="left">
-            <img class="avatar" src="resources/images/<?php echo $result[$count]["avatar"] ?>">
+            <img class="avatar" src="resources/images/<?php echo $row["avatar"] ?>">
         </div>
         <div class="right">
-            <h2><?php echo $result[$count]["name"] ?> </h2>
+            <h2><?php echo $row["name"] ?> </h2>
             <div class="stats">
                 <ul class="fa-ul">
-                    <li><span class="fa-li"><i class="fas fa-heart"></i></span><?php echo $result[$count]["health"] ?></li>
-                    <li><span class="fa-li"><i class="fas fa-fist-raised"></i></span><?php echo $result[$count]["attack"] ?></li>
-                    <li><span class="fa-li"><i class="fas fa-shield-alt"></i></span><?php echo $result[$count]["defense"] ?></li>
+                    <li><span class="fa-li"><i class="fas fa-heart"></i></span><?php echo $row["health"] ?></li>
+                    <li><span class="fa-li"><i class="fas fa-fist-raised"></i></span><?php echo $row["attack"] ?></li>
+                    <li><span class="fa-li"><i class="fas fa-shield-alt"></i></span><?php echo $row["defense"] ?></li>
                 </ul>
             </div>
         </div>

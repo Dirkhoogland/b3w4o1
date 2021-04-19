@@ -1,8 +1,9 @@
 <?php 
-    require 'connection.php';
-    require 'function2.php';
 
-
+require 'function.php';
+connection();
+$result = functie2();
+ 
 
 ?>
 

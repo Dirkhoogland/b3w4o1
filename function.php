@@ -1,18 +1,54 @@
 <?php 
- include 'connection.php';
+ function connection(){
+try {
+    $conn = new PDO('mysql:host=localhost;dbname=opdracht-4', 'root','mysql' );
+    return $conn;
+    }
+   
+
+    catch (PDOException $e) {
+    print "Error!: " . $e->getMessage() . "<br/>";
+    die();
+}
+}
 
 
- $sql='SELECT avatar, id, name , health , bio , color , attack , defense , weapon , armor FROM `characters` order by name';
-$sth= $conn->prepare($sql);
-$sth->execute();
-$result= $sth->fetchall();
-$query2 = 'SELECT COUNT(name) FROM characters';
+function functie(){
+ 	$sql='SELECT avatar, id, name , health , bio , color , attack , defense , weapon , armor FROM `characters` order by name';
+	$conn = connection();
+	$sth = $conn->prepare($sql);
+	$sth->execute();
+	$result= $sth->fetchall();
 
-$sth2 = $conn->prepare($query2);
 
-$sth2->execute();
+	$count = 0;
+	return $result;
+}
 
-$qty = $sth2->fetch();
+	function functie2() {
+	 include 'connection.php';
+	 $count = $_GET["id"];
+    $sql='SELECT avatar, id, name , health , bio , color , attack , defense , weapon , armor FROM `characters` WHERE id = ' . $count;
+    	$conn = connection();
+    $sth= $conn->prepare($sql);
+    $sth->execute();
+    $result= $sth->fetchall();
+    return $result;
+}
 
-$count = 0;
+
+
+function countAllCharacters(){
+	$conn = connection();
+
+	$query2 = 'SELECT COUNT(name) FROM characters';
+
+	$sth2 = $conn->prepare($query2);
+
+	$sth2->execute();
+
+	$qty = $sth2->fetch();
+	return $qty;
+}
+
     ?>
